@@ -96,6 +96,19 @@ class block_course_modulenavigation extends block_base {
             return $this->content;
         }
 
+        if (get_config('block_course_modulenavigation', 'modulepageonly') == 2) {
+            if ($PAGE->pagelayout == 'course') {
+                if ($this->instance->pagetypepattern != '*') {
+                    $coursecontext = context_course::instance($this->page->course->id);
+                    if (has_capability('block/course_modulenavigation:addinstance', $coursecontext)) {
+                        $alerttext = get_string('alertmodulepageonly', 'block_course_modulenavigation');
+                        $this->content->text = html_writer::tag('div', $alerttext, array('class' => 'alert alert-warning'));
+                    }
+                }
+                return $this->content;
+            }
+        }
+
         $format = course_get_format($this->page->course);
         $course = $format->get_course(); // Needed to have numsections property available.
 
@@ -181,6 +194,25 @@ class block_course_modulenavigation extends block_base {
             $template->hasprevnext = true;
             $template->hasnext = true;
             $template->hasprev = true;
+        }
+
+        if (get_config('block_course_modulenavigation', 'onesectionsimplified') == 2) {
+            $template->hasnext = false;
+            $template->hasprev = false;
+        }
+
+        $template->checkboxright = false;
+        $template->checkboxleft = true;
+        if (get_config('block_course_modulenavigation', 'completionchecklocation') == 2) {
+            $template->checkboxright = true;
+            $template->checkboxleft = false;
+        }
+
+        $template->circlechecks = true;
+        $template->checkchecks = false;
+        if (get_config('block_course_modulenavigation', 'completionchecktype') == 2) {
+            $template->circlechecks = false;
+            $template->checkchecks = true;
         }
 
         $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
@@ -279,8 +311,12 @@ class block_course_modulenavigation extends block_base {
             if ($thissection->selected) {
 
                 $pn = $this->get_prev_next($sectionnums, $thissection->number);
-
-                $courseurl = new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $i));
+                if (get_config('block_course_modulenavigation', 'onesectionsimplified') == 2) {
+                    $params = array('id' => $course->id);
+                } else {
+                    $params = array('id' => $course->id, 'section' => $i);
+                }
+                $courseurl = new moodle_url('/course/view.php', $params);
                 $template->courseurl = $courseurl->out();
 
                 if ($pn->next === false) {

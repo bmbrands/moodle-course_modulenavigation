@@ -64,16 +64,36 @@
                 <ul class="activities list-group">
                 {{#modules}}
                     <li >
-                    <a href="{{{url}}}" class="{{active}}">
-                      {{#completionon}}
-                          <div class="completionbox">
-                            <div class="completioncheck {{completeclass}}">
+                    <a href="{{{url}}}" class="{{active}} {{#checkboxleft}}checkboxleft{{/checkboxleft}} {{#checkboxright}}checkboxright{{/checkboxright}}">
+                        {{#completionon}}
+                            {{#checkboxleft}}
+                            <div class="completionbox">
+                                {{#circlechecks}}
+                                <div class="completioncheck checkicon {{completeclass}}">
+                                </div>
+                                {{/circlechecks}}
+                                {{#checkchecks}}
+                                <i class="fa fa-check checkicon {{completeclass}}"></i>
+                                {{/checkchecks}}
                             </div>
-                          </div>
-                      {{/completionon}}
-                          <div class="activityname">
-                          {{{name}}}
-                          </div>
+                            {{/checkboxleft}}
+                        {{/completionon}}
+                        <div class="activityname">
+                            {{{name}}}
+                        </div>
+                        {{#completionon}}
+                            {{#checkboxright}}
+                            <div class="completionbox">
+                                {{#circlechecks}}
+                                <div class="completioncheck {{completeclass}}">
+                                </div>
+                                {{/circlechecks}}
+                                {{#checkchecks}}
+                                <i class="fa fa-check checkicon {{completeclass}}"></i>
+                                {{/checkchecks}}
+                            </div>
+                            {{/checkboxright}}
+                        {{/completionon}}
                     </a>
                     </li>
                 {{/modules}}

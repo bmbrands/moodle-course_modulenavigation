@@ -67,4 +67,48 @@ if ($ADMIN->fulltree) {
         2 => new lang_string('yes')   // Yes.
     );
     $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Option: Show on activity pages only.
+    $name = 'block_course_modulenavigation/modulepageonly';
+    $title = get_string('modulepageonly', 'block_course_modulenavigation');
+    $description = get_string('modulepageonly_desc', 'block_course_modulenavigation');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('no'), // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Option: Show on activity pages only.
+    $name = 'block_course_modulenavigation/onesectionsimplified';
+    $title = get_string('onesectionsimplified', 'block_course_modulenavigation');
+    $description = get_string('onesectionsimplified_desc', 'block_course_modulenavigation');
+    $default = 1;
+    $choices = array(
+        1 => new lang_string('no'), // No.
+        2 => new lang_string('yes')   // Yes.
+    );
+    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Option: Type of check icon for activity completion.
+    $name = 'block_course_modulenavigation/completionchecktype';
+    $title = get_string('completionchecktype', 'block_course_modulenavigation');
+    $description = get_string('completionchecktype_desc', 'block_course_modulenavigation');
+    $default = 1;
+    $choices = array(
+        1 => get_string('circle', 'block_course_modulenavigation'),
+        2 => get_string('check', 'block_course_modulenavigation')
+    );
+    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices));
+
+    // Option: Location of completion check.
+    $name = 'block_course_modulenavigation/completionchecklocation';
+    $title = get_string('completionchecklocation', 'block_course_modulenavigation');
+    $description = get_string('completionchecklocation_desc', 'block_course_modulenavigation');
+    $default = 1;
+    $choices = array(
+        1 => get_string('left', 'block_course_modulenavigation'),
+        2 => get_string('right', 'block_course_modulenavigation')
+    );
+    $settings->add(new admin_setting_configselect($name, $title, $description, $default, $choices)); 
 }

@@ -65,7 +65,7 @@
         &>li {
             display: table-cell;
             a {
-                padding: 0;
+                padding: @section-heading-padding;
                 float: none;
                 display: block;
                 background-color: transparent;
@@ -84,6 +84,10 @@
             padding: 5px 10px;
             border-bottom: 1px solid #eee;
             display: block;
+            &.checkboxright {
+                display: table;
+                width: 100%;
+            }
             &:hover,
             &.active {
                 text-decoration: none;
@@ -98,10 +102,21 @@
         .activityname {
             display: table-cell;
         }
-        .completioncheck {
+        .checkboxright .activityname {
+            margin-left: 10px;
+        }
+
+        .checkboxleft .completioncheck {
             position: absolute;
             top: 50%;
             margin-top: -5px;
+        }
+        .checkboxright .completionbox {
+            width: 20%;
+            text-align: right;
+        }
+    
+        .completioncheck {
             content: '';
             width: 10px;
             height: 10px;
@@ -114,6 +129,17 @@
             &.completed {
                 border: 1px solid #5cb85c;
                 background-color: #5cb85c;
+            }
+        }
+        .checkicon {
+            display: none;
+            &.incomplete {
+                display: block;
+                color: #e8e8e8;
+            }
+            &.completed {
+                display: block;
+                color: #5cb85c;
             }
         }
         .modulenavigationlabel {
@@ -140,7 +166,6 @@
 
     // Optional heading
     .module-navigation-section-heading {
-        padding: @section-heading-padding;
         border-bottom: 1px solid transparent;
         .border-top-radius((@section-border-radius - 1));
 

@@ -66,16 +66,36 @@
         {{#modules}}
           {{^onlytitles}}
             <li>
-              <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}}">
+              <a href="{{{url}}}" class="{{active}} {{#label}}modulenavigationlabel{{/label}} {{#checkboxleft}}checkboxleft{{/checkboxleft}} {{#checkboxright}}checkboxright{{/checkboxright}}">
                 {{#completionon}}
-                  <div class="completionbox">
-                    <div class="completioncheck {{completeclass}}">
+                    {{#checkboxleft}}
+                    <div class="completionbox">
+                        {{#circlechecks}}
+                        <div class="completioncheck checkicon {{completeclass}}">
+                        </div>
+                        {{/circlechecks}}
+                        {{#checkchecks}}
+                        <i class="fa fa-check checkicon {{completeclass}}"></i>
+                        {{/checkchecks}}
                     </div>
-                  </div>
+                    {{/checkboxleft}}
                 {{/completionon}}
-                  <div class="activityname">
-                  {{{name}}}
-                  </div>
+                <div class="activityname">
+                    {{{name}}}
+                </div>
+                {{#completionon}}
+                    {{#checkboxright}}
+                    <div class="completionbox">
+                        {{#circlechecks}}
+                        <div class="completioncheck {{completeclass}}">
+                        </div>
+                        {{/circlechecks}}
+                        {{#checkchecks}}
+                        <i class="fa fa-check checkicon {{completeclass}}"></i>
+                        {{/checkchecks}}
+                    </div>
+                    {{/checkboxright}}
+                {{/completionon}}
               </a>
             </li>
           {{/onlytitles}}
