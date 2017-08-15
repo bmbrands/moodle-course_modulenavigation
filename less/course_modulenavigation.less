@@ -81,7 +81,7 @@
         padding: 0;
         list-style: none;
         li > a {
-            padding: 5px 10px;
+            padding: 0;
             border-bottom: 1px solid #eee;
             display: block;
             &.checkboxright {
@@ -95,11 +95,13 @@
             }
         }
         .completionbox {
+            padding: @section-heading-padding;
             position: relative;
             display: table-cell;
             width: 18px;
         }
         .activityname {
+            padding: @section-heading-padding;
             display: table-cell;
         }
         .checkboxright .activityname {
@@ -156,6 +158,7 @@
         background-color: @section-bg;
         border: 1px solid transparent;
         border-radius: @section-border-radius;
+        box-sizing: border-box;
     }
 
     // section contents

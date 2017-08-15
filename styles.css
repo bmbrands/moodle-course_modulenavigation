@@ -54,7 +54,7 @@
   list-style: none;
 }
 .block.block_course_modulenavigation ul.activities li > a {
-  padding: 5px 10px;
+  padding: 0;
   border-bottom: 1px solid #eee;
   display: block;
 }
@@ -68,11 +68,13 @@
   background-color: #eee;
 }
 .block.block_course_modulenavigation ul.activities .completionbox {
+  padding: 10px 15px;
   position: relative;
   display: table-cell;
   width: 18px;
 }
 .block.block_course_modulenavigation ul.activities .activityname {
+  padding: 10px 15px;
   display: table-cell;
 }
 .block.block_course_modulenavigation ul.activities .checkboxright .activityname {
@@ -123,6 +125,7 @@
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 0;
+  box-sizing: border-box;
 }
 .block.block_course_modulenavigation .section-body {
   padding: 0;
